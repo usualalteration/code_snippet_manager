@@ -36,7 +36,7 @@
                             echo "<tr>";
                             echo "<td>".$row["linguaggio"]."</td>";
                             echo "<td>".$row["descrizione"]."</td>";
-                            echo "<td>".$row["snippet"]."</td>";
+                            echo "<td><pre>".$row["snippet"]."</td>";
                             echo "</tr>";
                         }
                         echo "</tbody>";

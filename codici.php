@@ -69,7 +69,7 @@
 					echo "<td>" . $row['id'] . "</td>";
 					echo "<td>" . $row['linguaggio'] . "</td>";
 					echo "<td>". $row['descrizione'] . "</td>";
-					echo "<td>" . $row['snippet'] . "</td>";
+					echo "<td><pre>" . $row['snippet'] . "</td>";
 					echo "<td><a href='modifica_codice.php?id=". $row['id']. "'>Modifica</a></td>";
 					echo "</tr>";
 				}
