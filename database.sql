@@ -9,12 +9,12 @@ snippet text NOT NULL
 );
 
 CREATE TABLE users(
-username VARCHAR(25) PRIMARY KEY,
+id int not null auto_increment PRIMARY KEY,
+username VARCHAR(25),
 password VARCHAR(16)
 );
 
-USE code_snippet_manager;
-INSERT INTO users (username,password) VALUES ('Nicole', 'LampadaAdOlio12#');
+INSERT INTO users (id,username,password) VALUES ('1','Nicole', 'Lampadaolio12#');
 
 INSERT INTO snippets(id,linguaggio,descrizione,snippet) VALUES ('1','C++','Find the maximum element in an array',
 '#include <iostream>

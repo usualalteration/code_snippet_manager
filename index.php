@@ -20,45 +20,31 @@
                                 <a class="nav-link" aria-current="page" href="index.php">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="codici.php">Codici recenti</a>
+                                <a class="nav-link" href="cerca.php">Search</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="inserisci.html">Aggiungi</a>
+                                <a class="nav-link" href="https://usualalteration.github.io/">Who am I</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="cerca.php">Cerca</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="https://usualalteration.github.io/">Chi sono</a>
-                            </li>
-                        </ul>
-                        <ul class="navbar-nav ms-auto">
-                            
-                            <?php
-                                session_start();
-                                if(isset($_SESSION['username'])){
-                                    echo '<li class="nav-item">
-                                        <a class="nav-link" href="logout.php">Logout</a>
-                                    </li>';
-                                } else {
-                                    echo '<li class="nav-item">
-                                        <a class="nav-link" href="login.php">Login</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="register.php">Register</a>
-                                    </li>';
-                                }
-                            ?>
                         </ul>
                     </div>
+                    <div>
+                        <ul class="nav navbar-nav navbar-right navbar-inverse">
+                        <li class="nav-item">
+                                <a class="nav-link" href="login.php">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="registra.php">Sign up</a>
+                            </li>
+                        </ul>
+                        </div>
                 </div>
             </nav>
             <table class="table table-striped">
 			<thead>
 				<tr>
-					<th>Numero</th>
-					<th>Linguaggio</th>
-					<th>Descrizione</th>
+					<th>Number</th>
+					<th>Language</th>
+					<th>Description</th>
 					<th>Snippet</th>
 				</tr>
 			</thead>
@@ -73,7 +59,7 @@
 				$conn= mysqli_connect($servername,$username,$password,$dbname);
 
 				if(!$conn){
-					die("Connessione non riuscita");
+					die("Connection failed");
 				}
 				$sql = "SELECT * FROM snippets";
 				$result = mysqli_query($conn,$sql);

@@ -1,8 +1,16 @@
-<html>
-    <head>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    </head>
-    <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Snippet</title>
+    <link rel="stylesheet" href="style.scss"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
         <?php
             require ("connessione.php");
 
@@ -13,11 +21,13 @@
 
             $conn= mysqli_connect($servername,$username,$password,$dbname);
 
-            if(!$conn){
+            if(!$conn)
+            {
                 die("Connessione non riuscita");
             }
 
-            if(isset($_POST['submit'])) {
+            if(isset($_POST['submit']))
+            {
                 $id=$_POST['id'];
                 $linguaggio = $_POST['linguaggio'];
                 $descrizione = $_POST['descrizione'];
@@ -32,7 +42,9 @@
                 else {
                     echo "Errore nell'aggiornamento dei dati del codice: " . mysqli_error($conn);
                 }
-            } else {
+            }
+            else
+            {
                 $id = $_GET['id'];
 
                 // Retrieve the existing data for this code snippet
@@ -48,21 +60,29 @@
             
             mysqli_close($conn);
         ?>
-          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <label for="id">Numero</label>
-            <input type="text" name="id" value="<?php echo $id; ?>" required readonly>
-            <br>
-            <label for="linguaggio">Linguaggio</label>
-            <input type="text" name="linguaggio" value="<?php echo $linguaggio; ?>" required>
-            <br>
-            <label for="descrizione">Descrizione</label>
-            <input type="text" name="descrizione" value="<?php echo $descrizione; ?>" required>
-            <br>
-            <label for="snippet">Snippet</label>
-            <input type="text" name="snippet" value="<?php echo $snippet; ?>" required>
-            <br>
-            <br>
-            <input type="submit" name="submit" value="modifica_codice">
-        </form> 
-    </body>
+    <div class="container">
+        <h1>Edit Snippet</h1>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div class="form-group">
+                <label for="id">Number</label>
+                <input type="text" class="form-control" name="id" value="<?php echo $id; ?>" required readonly>
+            </div>
+            <div class="form-group">
+                <label for="linguaggio">Language</label>
+                <input type="text" class="form-control" name="linguaggio" value="<?php echo $linguaggio; ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="descrizione">Description</label>
+                <input type="text" class="form-control" name="descrizione" value="<?php echo $descrizione; ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="snippet">Snippet</label>
+                <div class="code-editor">
+                    <textarea class="code-editor-content form-control" name="snippet" style="white-space: pre-wrap; height: 300px;" required><?php echo htmlentities($snippet); ?></textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" name="submit">Edit</button>
+        </form>
+    </div>
+</body>
 </html>
